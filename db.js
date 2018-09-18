@@ -1,51 +1,89 @@
+import { Random } from 'mockjs'
 export default {
-  echo: {
-    'titles': 'Syntax Demo',
-  
-    'string1|1-10': '★',
-    'string2|3': 'value',
-  
-    'number1|+1': 100,
-    'number2|1-100': 100,
-    'number3|1-100.1-10': 1,
-    'number4|123.1-10': 1,
-    'number5|123.3': 1,
-    'number6|123.10': 1.123,
-  
-    'boolean1|1': true,
-    'boolean2|1-2': true,
-  
-    'object1|2-4': {
-        '110000': '北京市',
-        '120000': '天津市',
-        '130000': '河北省',
-        '140000': '山西省'
-    },
-    'object2|2': {
-        '310000': '上海市',
-        '320000': '江苏省',
-        '330000': '浙江省',
-        '340000': '安徽省'
-    },
-  
-    'array1|1': ['AMD', 'CMD', 'KMD', 'UMD'],
-    'array2|1-10': ['Mock.js'],
-    'array3|3': ['Mock.js'],
-  
-    'function': function() {
-        return this.titles
+  login: {
+    code: '1000', 
+    msg: 'test', 
+    user: {
+      'userName': Random.cword(2, 4), 
+      'email': Random.word(15), 
+      'token': Random.word(20)
     }
   },
-  save: {
-    'code': '1000',
-    'msg': '保存成功'
+  todoList: {
+    code: '1000',
+    page: {
+      'list|10': [
+        {
+          id: 1,
+          code: Random.word(15),
+          importFlag: Random.boolean(),
+          title: Random.cword(10),
+          attachment: Random.cword(10, 20),
+          applyUserName: Random.cword(2, 4),
+          startTime: Random.date(),
+          status: 2
+        }
+      ]
+    }
   },
-  mmp: {
-    'number1|+1': 100,
-    'number2|1-100': 100,
-    'number3|1-100.1-10': 1,
-    'number4|123.1-10': 1,
-    'number5|123.3': 1,
-    'number6|123.10': 1.123
-  }
+  doneList: {
+    code: '1000',
+    page: {
+      'list|10': [
+        {
+          id: 2,
+          code: Random.word(15),
+          importFlag: Random.boolean(),
+          title: Random.cword(10),
+          attachment: Random.cword(10, 20),
+          applyUserName: Random.cword(2, 4),
+          startTime: Random.date(),
+          status: Random.integer(3, 4)
+        }
+      ]
+    }
+  },
+  applyList: {
+    code: '1000',
+    page: {
+      'list|10': [
+        {
+          id: 3,
+          code: Random.word(15),
+          importFlag: Random.boolean(),
+          title: Random.cword(10),
+          attachment: Random.cword(10, 20),
+          applyUserName: Random.cword(2, 4),
+          startTime: Random.date(),
+          status: Random.integer(1, 4)
+        }
+      ]
+    }
+  },
+  filetransferInfo: {
+    code: '1000',
+    fileTransfer: {
+      id: 1,
+      code: Random.word(15),
+      jobNum: Random.word(15),
+      importFlag: Random.boolean(),
+      title: Random.cword(10),
+      bapName: Random.cword(6),
+      baName: Random.cword(6),
+      content: Random.cword(56),
+      attachment: Random.cword(10, 20),
+      applyUserName: Random.cword(2, 4),
+      startTime: Random.date()
+    },
+    'taskLogs|5': [
+      {
+        id: 1,
+        taskName: Random.word(5),
+        advanceName: Random.cword(2, 4),
+        dealTime: Random.datetime(),
+        appOpinion: Random.cword(50),
+        action: Random.integer(1, 5)
+      }
+    ]
+  } 
 }

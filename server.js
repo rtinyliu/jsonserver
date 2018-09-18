@@ -22,34 +22,42 @@ server.use((req, res, next) => {
 })
 server.use(jsonServer.rewriter({
   '/api/*': '/$1',
+  '/app/*': '/$1',
   '/blog/:resource/:id/show': '/:resource/:id'
 }))
 
-server.get('/echo', (req, res) => {
-	var data = Mock.mock(db.echo)
+server.post('/login', (req, res) => {
+	var data = Mock.mock(db.login)
 	var json = JSON.stringify(data, null, 4)
 	// console.log('-----------------\n' + json)
 	res.send(json)
 })
-server.get('/mmp', (req, res) => {
-	var data = Mock.mock(db.mmp)
+server.get('/user/act/myApplyList', (req, res) => {
+	var data = Mock.mock(db.applyList)
 	var json = JSON.stringify(data, null, 4)
 	// console.log('-----------------\n' + json)
 	res.send(json)
 })
-server.post('/save', (req, res) => {
-	var data = Mock.mock(db.save)
+server.get('/user/act/myDoneList', (req, res) => {
+	var data = Mock.mock(db.doneList)
+	var json = JSON.stringify(data, null, 4)
+	// console.log('-----------------\n' + json)
+	res.send(json)
+})
+server.get('/user/act/myUpcoming', (req, res) => {
+	var data = Mock.mock(db.todoList)
+	var json = JSON.stringify(data, null, 4)
+	// console.log('-----------------\n' + json)
+	res.send(json)
+})
+server.get('/act/filetransfer/info/:id', (req, res) => {
+	var data = Mock.mock(db.filetransferInfo)
 	var json = JSON.stringify(data, null, 4)
 	// console.log('-----------------\n' + json)
 	res.send(json)
 })
 
-// router.render = (req, res) => {
-//   res.jsonp({
-//     body: res.locals.data
-//   })
-// }
-// server.use(router)
+
 server.listen(3000, () => {
   console.log('JSON Server is running')
 })
